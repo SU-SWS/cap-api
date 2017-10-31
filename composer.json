@@ -19,7 +19,7 @@
     "homepage": "https://github.com/su-sws/cap-api",
     "autoload": {
       "psr-4": {
-        "SUSWS\\CAPAPI": "src/CAPAPI/"
+        "SUSWS\\CAPAPI\\": "src/CAPAPI/"
       }
    }
 }
