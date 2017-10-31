@@ -177,7 +177,7 @@ abstract class AbstractAPILib {
 
     try {
       $body = $response->getBody();
-      $json = drupal_json_decode($body->getContents());
+      $json = json_decode($body->getContents());
     }
     catch (\Exception $e) {
       throw new \Exception("Error: Could not get a body from the response.");
