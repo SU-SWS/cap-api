@@ -1,8 +1,8 @@
 <?php
 
-use CAPAPI\AbstractAPILib as APILib;
+use SUSWS\CAPAPI\AbstractAPILib as APILib;
 
-namespace CAPAPI\ProfileLib;
+namespace SUSWS\CAPAPI\ProfileLib;
 
 /**
  * Fetch individual profile information from the api.

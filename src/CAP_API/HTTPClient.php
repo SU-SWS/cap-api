@@ -1,13 +1,13 @@
 <?php
 
 use GuzzleHttp\Client as GuzzleClient;
-use CAPAPI\LayoutsLib\LayoutsLib;
-use CAPAPI\SearchLib\SearchLib;
-use CAPAPI\SchemaLib\SchemaLib;
-use CAPAPI\ProfileLib\ProfileLib;
-use CAPAPI\OrgLib\OrgLib;
+use SUSWS\CAPAPI\LayoutsLib\LayoutsLib;
+use SUSWS\CAPAPI\SearchLib\SearchLib;
+use SUSWS\CAPAPI\SchemaLib\SchemaLib;
+use SUSWS\CAPAPI\ProfileLib\ProfileLib;
+use SUSWS\CAPAPI\OrgLib\OrgLib;
 
-namespace CAPAPI;
+namespace SUSWS\CAPAPI;
 
 /**
  * CAP HTTPClient extending Guzzle :)

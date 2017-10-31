@@ -1,8 +1,8 @@
 <?php
 
-use CAPAPI\AbstractAPILib as APILib;
+use SUSWS\CAPAPI\AbstractAPILib as APILib;
 
-namespace CAPAPI\OrgLib;
+namespace SUSWS\CAPAPI\OrgLib;
 
 /**
  * The OrgLib class is used for communicating with the CAP API's org endpoint.

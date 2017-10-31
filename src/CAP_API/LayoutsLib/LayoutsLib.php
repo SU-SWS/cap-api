@@ -1,7 +1,7 @@
 <?php
-use CAPAPI\AbstractAPILib as APILib;
+use SUSWS\CAPAPI\AbstractAPILib as APILib;
 
-namespace CAPAPI\LayoutsLib;
+namespace SUSWS\CAPAPI\LayoutsLib;
 
 /**
  * Gets 'Layouts' or schemas from the API.

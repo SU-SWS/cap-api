@@ -1,8 +1,8 @@
 <?php
 
-use CAPAPI\AbstractAPILib as APILib;
+use SUSWS\CAPAPI\AbstractAPILib as APILib;
 
-namespace CAPAPI\SearchLib;
+namespace SUSWS\CAPAPI\SearchLib;
 
 /**
  * Search for a profile by string using the search endpoint.
