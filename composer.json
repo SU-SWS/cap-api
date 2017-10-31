@@ -1,25 +1,25 @@
 {
-    "name": "su-sws/cap-api",
-    "description": "CAP API PHP Library",
-    "type": "library",
-    "license": "GPL-2.0+",
-    "support": {
-      "issues": "https://github.com/su-sws/cap-api/issues"
-    },
-    "authors": [
-      {
-        "name": "Shea McKinney",
-        "email": "sheamck@stanford.edu"
-      }
-    ],
-    "require": {
-      "guzzlehttp/guzzle": "~6.3.0",
-      "su-sws/stanford-api-auth": "dev-master"
-    },
-    "homepage": "https://github.com/su-sws/cap-api",
-    "autoload": {
-      "psr-4": {
-        "SUSWS\\CAPAPI\\": "src/CAPAPI/"
-      }
-   }
+  "name": "su-sws/cap-api",
+  "description": "CAP API PHP Library",
+  "type": "library",
+  "license": "GPL-2.0+",
+  "support": {
+    "issues": "https://github.com/su-sws/cap-api/issues"
+  },
+  "authors": [
+    {
+      "name": "Shea McKinney",
+      "email": "sheamck@stanford.edu"
+    }
+  ],
+  "require": {
+    "guzzlehttp/guzzle": "~6.3.0",
+    "su-sws/stanford-api-auth": "dev-master"
+  },
+  "homepage": "https://github.com/su-sws/cap-api",
+  "autoload": {
+    "psr-4": {
+      "SUSWS\\CAPAPI\\": "src/CAPAPI/"
+    }
+  }
 }
