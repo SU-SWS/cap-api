@@ -1,0 +1,19 @@
+{
+    "name": "su-sws/cap-api",
+    "description": "CAP API PHP Library",
+    "type": "library",
+    "license": "GPL-2.0+",
+    "support": {
+      "issues": "https://github.com/SU-SWS/cap-api/issues"
+    },
+    "authors": [
+      {
+        "name": "Shea McKinney",
+        "email": "sheamck@stanford.edu"
+      }
+    ],
+    "require": {
+      "guzzlehttp/guzzle": "~6.3.0"
+    },
+    "homepage": "https://github.com/SU-SWS/cap-api"
+}
