@@ -6,6 +6,7 @@ use SUSWS\CAPAPI\SchemaLib\SchemaLib;
 use SUSWS\CAPAPI\ProfileLib\ProfileLib;
 use SUSWS\CAPAPI\OrgLib\OrgLib;
 use GuzzleHttp\Client;
+use SUSWS\APIAuthLib\Authlib;
 
 namespace SUSWS\CAPAPI;
 
@@ -34,7 +35,9 @@ namespace SUSWS\CAPAPI;
 class HTTPClient {
 
   // Storage for the Guzzle http client object.
-  protected $httpClient = NULL;
+  protected $httpClient;
+  // Authentication Client.
+  protected $authClient;
   // Default CAP Endpoint url.
   protected $httpEndpoint = 'https://api.stanford.edu';
   // Auth Token is a very long string that is obtained from the CAP API after
@@ -48,8 +51,10 @@ class HTTPClient {
    *
    * Live... live!
    */
-  public function __construct($client) {
+  public function __construct($client, \SUSWS\APIAuthLib\Authlib $authClient) {
     $this->setHttpClient($client);
+    $this->authClient = $authClient;
+    $this->setApiToken($authClient->getAuthApiToken());
   }
 
   /**
