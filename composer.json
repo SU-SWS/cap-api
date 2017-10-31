@@ -13,7 +13,8 @@
       }
     ],
     "require": {
-      "guzzlehttp/guzzle": "~6.3.0"
+      "guzzlehttp/guzzle": "~6.3.0",
+      "su-sws/cap-api-auth": "dev-master"
     },
     "homepage": "https://github.com/SU-SWS/cap-api"
 }

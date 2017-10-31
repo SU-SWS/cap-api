@@ -1,8 +1,14 @@
 <?php
+
+use CAPAPI\AbstractAPILib as APILib;
+
+namespace CAPAPI\SchemaLib;
+
 /**
- * @file
+ * The schema endpoint describes the XML schema for a profile.
+ *
  * The SchemaLib library is used to communicate with the CAP API's schemea
- * endpoint. The schema endpoint describes the XML schema for a profile.
+ * endpoint.
  *
  * EXAMPLES
  *
@@ -11,12 +17,7 @@
  *
  * $client = new HTTPClient();
  * $schema = $client->api('schema')->get('profile');
- *
  */
-
-namespace CAPx\APILib\SchemaLib;
-use CAPx\APILib\AbstractAPILib as APILib;
-
 class SchemaLib extends APILib {
 
   /**
@@ -30,14 +31,13 @@ class SchemaLib extends APILib {
     return $this->get('profile');
   }
 
-
   /**
    * Get function for the schemas endpoint.
    *
    * Returns an array of informationdescribing a schema type.
    *
    * @param string $type
-   *   Currently only known supported type is 'profile'
+   *   Currently only known supported type is 'profile'.
    *
    * @return mixed
    *   Either an array of schema data describing profiles or false if there is
@@ -48,14 +48,13 @@ class SchemaLib extends APILib {
     return $this->makeRequest($endpoint);
   }
 
-
   /**
    * Get function for the schemas endpoint.
    *
    * Returns a JSON string of information describing a schema type.
    *
    * @param string $type
-   *   Currently only known supported type is 'profile'
+   *   Currently only known supported type is 'profile'.
    *
    * @return mixed
    *   Either an array of schema data describing profiles or false if there is

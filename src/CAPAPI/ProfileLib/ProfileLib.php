@@ -1,6 +1,12 @@
 <?php
+
+use CAPAPI\AbstractAPILib as APILib;
+
+namespace CAPAPI\ProfileLib;
+
 /**
- * @file
+ * Fetch individual profile information from the api.
+ *
  * The ProfileLib library is used to search for and find profiles on a number of
  * parameters. This library is also used for fetching individual profile data.
  *
@@ -11,12 +17,7 @@
  *
  * $client = new HTTPClient();
  * $profile = $cleint->api('profile')->get(34234);
- *
  */
-
-namespace CAPx\APILib\ProfileLib;
-use CAPx\APILib\AbstractAPILib as APILib;
-
 class ProfileLib extends APILib {
 
   /**
@@ -28,7 +29,7 @@ class ProfileLib extends APILib {
    * @param string $type
    *   The type of search being performed. Options are:
    *   ids, uids (sunet), university ids, orgCodes,
-   *   privGroups, name, orgAlias
+   *   privGroups, name, orgAlias.
    * @param mixed $args
    *   array or string input. The search arguments.
    * @param bool $exact

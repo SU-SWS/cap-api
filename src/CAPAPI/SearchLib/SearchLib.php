@@ -1,6 +1,12 @@
 <?php
+
+use CAPAPI\AbstractAPILib as APILib;
+
+namespace CAPAPI\SearchLib;
+
 /**
- * @file
+ * Search for a profile by string using the search endpoint.
+ *
  * The SearchLib library supports results for an autocomplete search box and
  * a full keyword search. Search is performed by keyword and is typically used
  * with searching for profiles by name.
@@ -12,10 +18,6 @@
  * $client = new HTTPClient();
  * $autocomplete = $client->api('search')->keyword($string);
  */
-
-namespace CAPx\APILib\SearchLib;
-use CAPx\APILib\AbstractAPILib as APILib;
-
 class SearchLib extends APILib {
 
   /**
@@ -35,7 +37,6 @@ class SearchLib extends APILib {
 
     return $this->makeRequest($endpoint, array(), $options);
   }
-
 
   /**
    * Keyword serach method.

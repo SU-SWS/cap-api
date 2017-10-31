@@ -1,10 +1,16 @@
 <?php
+
+use CAPAPI\AbstractAPILib as APILib;
+
+namespace CAPAPI\OrgLib;
+
 /**
- * @file
  * The OrgLib class is used for communicating with the CAP API's org endpoint.
+ *
  * This class can return information about the organization itself or the
  * profiles that are attached to it. To see the org codes and heirarchy please
- * refer to the Org Chart: http://web.stanford.edu/dept/pres-provost/budget/org/orgchart/
+ * refer to the Org Chart:
+ * http://web.stanford.edu/dept/pres-provost/budget/org/orgchart/.
  *
  * EXAMPLE:
  * $client = new HTTPClient();
@@ -18,24 +24,19 @@
  * $client = new HTTPClient();
  * $org = 'AA00'
  * $profiles = $client->api('org')->getProfiles($org);
- *
  */
-
-namespace CAPx\APILib\OrgLib;
-use CAPx\APILib\AbstractAPILib as APILib;
-
 class OrgLib extends APILib {
 
   /**
    * Get an array or organization information by an array of org codes.
    *
    * @param array $vars
-   *   either a single string org code or an array of org codes
+   *   Either a single string org code or an array of org codes.
    *
    * @return mixed
    *   false if request fails or an array of data if it resolves.
    */
-  public function get($vars) {
+  public function get($vars array) {
     // The endpoint. Usually default hard coded value.
     $endpoint = $this->getEndpoint();
     $options = $this->getOptions();
@@ -55,7 +56,7 @@ class OrgLib extends APILib {
    * Get an array of information about a single organization by org code.
    *
    * @param string $orgCode
-   *   A valid Stanford Org Code
+   *   A valid Stanford Org Code.
    *
    * @return mixed
    *   false if request fails or an array of data if it resolves.
@@ -70,7 +71,7 @@ class OrgLib extends APILib {
    * Get an array of profile information based on their relationship to an org code.
    *
    * @param string $orgCode
-   *   A valid Stanford organization code
+   *   A valid Stanford organization code.
    *
    * @return mixed
    *   False if request fails or an array of data if it resolves.

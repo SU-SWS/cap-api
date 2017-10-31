@@ -1,6 +1,11 @@
 <?php
+use CAPAPI\AbstractAPILib as APILib;
+
+namespace CAPAPI\LayoutsLib;
+
 /**
- * @file
+ * Gets 'Layouts' or schemas from the API.
+ *
  * The Layouts Library is used for communicating with the CAP API's layouts
  * endpoint. The layouts endpoint returns a json array of information about
  * the fields used with a particular profile type. A few helpful wrapper methods
@@ -14,10 +19,6 @@
  *
  * Types: faculty, physician, postdoc, student, staff, invitee
  */
-
-namespace CAPx\APILib\LayoutsLib;
-use CAPx\APILib\AbstractAPILib as APILib;
-
 class LayoutsLib extends APILib {
 
   /**
@@ -84,7 +85,7 @@ class LayoutsLib extends APILib {
    * Requests layout information from the CAP API layouts endpoint by type.
    *
    * @param string $type
-   *   The type of profile. eg: staff
+   *   The type of profile. eg: staff.
    *
    * @return mixed
    *   false or an array of layout data
@@ -93,6 +94,5 @@ class LayoutsLib extends APILib {
     $endpoint = $this->getEndpoint() . "/cap/v1/layouts/" . $type;
     return $this->makeRequest($endpoint);
   }
-
 
 }

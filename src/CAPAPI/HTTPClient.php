@@ -1,7 +1,17 @@
 <?php
+
+use GuzzleHttp\Client as GuzzleClient;
+use CAPAPI\LayoutsLib\LayoutsLib;
+use CAPAPI\SearchLib\SearchLib;
+use CAPAPI\SchemaLib\SchemaLib;
+use CAPAPI\ProfileLib\ProfileLib;
+use CAPAPI\OrgLib\OrgLib;
+
+namespace CAPAPI;
+
 /**
- * @file
  * CAP HTTPClient extending Guzzle :)
+ *
  * This client is used for communicating with the various endpoints of the
  * CAP API. The base of this class is the Guzzle HTTP client but contains a few
  * helpers and a lightweight lazy loading API library.
@@ -21,10 +31,6 @@
  *
  * $schema = $client->api('schema')->profile();
  */
-
-namespace CAPx\APILib;
-use GuzzleHttp\Client as GuzzleClient;
-
 class HTTPClient {
 
   // Storage for the Guzzle http client object.
@@ -61,7 +67,7 @@ class HTTPClient {
    * Setter for $httpEndpoint.
    *
    * @param string $end
-   *   A fully qualified URL without the last slash
+   *   A fully qualified URL without the last slash.
    */
   public function setEndpoint($end) {
     $this->httpEndpoint = $end;
@@ -93,7 +99,7 @@ class HTTPClient {
    * @param GuzzleClient $client
    *   A Guzzle client object.
    */
-  public function setHttpClient($client) {
+  public function setHttpClient(GuzzleClient $client) {
     $this->httpClient = $client;
   }
 
@@ -204,31 +210,27 @@ class HTTPClient {
     $options['query']['access_token'] = $this->getApiToken();
 
     switch ($name) {
-      case "auth":
-        $api = new \CAPx\APILib\AuthLib\AuthLib($client);
-        break;
-
       case "org":
       case "orgs":
-        $api = new \CAPx\APILib\OrgLib\OrgLib($client, $options);
+        $api = new OrgLib($client, $options);
         break;
 
       case "profile":
       case "profiles":
-        $api = new \CAPx\APILib\ProfileLib\ProfileLib($client, $options);
+        $api = new ProfileLib($client, $options);
         break;
 
       case "schema":
-        $api = new \CAPx\APILib\SchemaLib\SchemaLib($client, $options);
+        $api = new SchemaLib($client, $options);
         break;
 
       case "search":
-        $api = new \CAPx\APILib\SearchLib\SearchLib($client, $options);
+        $api = new SearchLib($client, $options);
         break;
 
       case "layout":
       case "layouts":
-        $api = new \CAPx\APILib\LayoutsLib\LayoutsLib($client, $options);
+        $api = new LayoutsLib($client, $options);
         break;
 
       default:
