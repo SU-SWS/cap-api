@@ -1,10 +1,10 @@
 {
-    "name": "SUSWS/cap-api",
+    "name": "su-sws/cap-api",
     "description": "CAP API PHP Library",
     "type": "library",
     "license": "GPL-2.0+",
     "support": {
-      "issues": "https://github.com/SUSWS/cap-api/issues"
+      "issues": "https://github.com/su-sws/cap-api/issues"
     },
     "authors": [
       {
@@ -14,7 +14,12 @@
     ],
     "require": {
       "guzzlehttp/guzzle": "~6.3.0",
-      "SUSWS/cap-api-auth": "dev-master"
+      "su-sws/stanford-api-auth": "dev-master"
     },
-    "homepage": "https://github.com/SUSWS/cap-api"
+    "homepage": "https://github.com/su-sws/cap-api",
+    "autoload": {
+      "psr-4": {
+        "SUSWS\\CAPAPI": "src/CAPAPI/"
+      }
+   }
 }
