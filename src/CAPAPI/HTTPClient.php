@@ -1,11 +1,11 @@
 <?php
 
-use GuzzleHttp\Client as GuzzleClient;
 use SUSWS\CAPAPI\LayoutsLib\LayoutsLib;
 use SUSWS\CAPAPI\SearchLib\SearchLib;
 use SUSWS\CAPAPI\SchemaLib\SchemaLib;
 use SUSWS\CAPAPI\ProfileLib\ProfileLib;
 use SUSWS\CAPAPI\OrgLib\OrgLib;
+use GuzzleHttp\Client;
 
 namespace SUSWS\CAPAPI;
 
@@ -44,12 +44,11 @@ class HTTPClient {
   protected $httpOptions;
 
   /**
-   * Build with a Guzzle Client.
+   * Build with an HTTP Client such as guzzle.
    *
    * Live... live!
    */
-  public function __construct() {
-    $client = new GuzzleClient(['defaults' => ['auth' => 'oauth']]);
+  public function __construct($client) {
     $this->setHttpClient($client);
   }
 
@@ -76,7 +75,7 @@ class HTTPClient {
   /**
    * Getter for $httpClient.
    *
-   * @return GuzzleClient
+   * @return Client
    *   A Guzzle HTTP client.
    */
   public function getHttpClient() {
@@ -87,7 +86,7 @@ class HTTPClient {
     }
 
     // If we do not have a client we need to create one.
-    $client = new GuzzleClient($this->getEndpoint());
+    $client = new Client($this->getEndpoint());
     $this->setHttpClient($client);
 
     return $client;
@@ -96,10 +95,10 @@ class HTTPClient {
   /**
    * Setter for $httpClient.
    *
-   * @param GuzzleClient $client
+   * @param Client $client
    *   A Guzzle client object.
    */
-  public function setHttpClient(GuzzleClient $client) {
+  public function setHttpClient($client) {
     $this->httpClient = $client;
   }
 
