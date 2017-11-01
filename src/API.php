@@ -1,14 +1,14 @@
 <?php
 
+namespace SUSWS\CAPAPI;
+
 use SUSWS\CAPAPI\LayoutsLib\LayoutsLib;
 use SUSWS\CAPAPI\SearchLib\SearchLib;
 use SUSWS\CAPAPI\SchemaLib\SchemaLib;
 use SUSWS\CAPAPI\ProfileLib\ProfileLib;
 use SUSWS\CAPAPI\OrgLib\OrgLib;
 use GuzzleHttp\Client;
-use SUSWS\APIAuthLib\Authlib;
-
-namespace SUSWS\CAPAPI;
+use SUSWS\APIAuthLib\Auth;
 
 /**
  * CAP HTTPClient extending Guzzle :)
@@ -32,7 +32,7 @@ namespace SUSWS\CAPAPI;
  *
  * $schema = $client->api('schema')->profile();
  */
-class HTTPClient {
+class API {
 
   // Storage for the Guzzle http client object.
   protected $httpClient;
@@ -51,7 +51,7 @@ class HTTPClient {
    *
    * Live... live!
    */
-  public function __construct($client, \SUSWS\APIAuthLib\Authlib $authClient) {
+  public function __construct(Client $client, Auth $authClient) {
     $this->setHttpClient($client);
     $this->authClient = $authClient;
     $this->setApiToken($authClient->getAuthApiToken());
@@ -180,17 +180,15 @@ class HTTPClient {
   }
 
   /**
-   * [getPage description]
-   * @return [type] [description]
+   * Returns the page number for the request.
+   *
+   * @return int
+   *    The page number.
    */
   public function getPage() {
     $httpOpts = $this->getHttpOptions();
     return $httpOpts['query']['ps'];
   }
-
-  //
-  // ---------------------------------------------------------------------------
-  //
 
   /**
    * This API function acts as a gateway for the various parts of this Library.
@@ -216,25 +214,25 @@ class HTTPClient {
     switch ($name) {
       case "org":
       case "orgs":
-        $api = new OrgLib\OrgLib($client, $options);
+        $api = new OrgLib($client, $options);
         break;
 
       case "profile":
       case "profiles":
-        $api = new ProfileLib\ProfileLib($client, $options);
+        $api = new ProfileLib($client, $options);
         break;
 
       case "schema":
-        $api = new SchemaLib\SchemaLib($client, $options);
+        $api = new SchemaLib($client, $options);
         break;
 
       case "search":
-        $api = new SearchLib\SearchLib($client, $options);
+        $api = new SearchLib($client, $options);
         break;
 
       case "layout":
       case "layouts":
-        $api = new LayoutsLib\LayoutsLib($client, $options);
+        $api = new LayoutsLib($client, $options);
         break;
 
       default:

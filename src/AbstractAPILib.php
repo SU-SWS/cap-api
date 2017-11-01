@@ -1,9 +1,9 @@
 <?php
 
+namespace SUSWS\CAPAPI;
+
 use SUSWS\CAPAPI\AbstractAPILibInterface;
 use GuzzleHttp\Client;
-
-namespace SUSWS\CAPAPI;
 
 /**
  * Abstract class for the API library.

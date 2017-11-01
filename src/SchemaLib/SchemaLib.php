@@ -1,8 +1,8 @@
 <?php
 
-use SUSWS\CAPAPI\AbstractAPILib as APILib;
-
 namespace SUSWS\CAPAPI\SchemaLib;
+
+use SUSWS\CAPAPI\AbstractAPILib as APILib;
 
 /**
  * The schema endpoint describes the XML schema for a profile.
