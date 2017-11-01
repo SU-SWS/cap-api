@@ -216,29 +216,29 @@ class HTTPClient {
     switch ($name) {
       case "org":
       case "orgs":
-        $api = new OrgLib($client, $options);
+        $api = new OrgLib\OrgLib($client, $options);
         break;
 
       case "profile":
       case "profiles":
-        $api = new ProfileLib($client, $options);
+        $api = new ProfileLib\ProfileLib($client, $options);
         break;
 
       case "schema":
-        $api = new SchemaLib($client, $options);
+        $api = new SchemaLib\SchemaLib($client, $options);
         break;
 
       case "search":
-        $api = new SearchLib($client, $options);
+        $api = new SearchLib\SearchLib($client, $options);
         break;
 
       case "layout":
       case "layouts":
-        $api = new LayoutsLib($client, $options);
+        $api = new LayoutsLib\LayoutsLib($client, $options);
         break;
 
       default:
-        throw new \Exception(sprintf('Undefined api instance called: "%s"', $name));
+        throw new Exception(sprintf('Undefined api instance called: "%s"', $name));
     }
 
     $api->setEndpoint($this->getEndpoint());

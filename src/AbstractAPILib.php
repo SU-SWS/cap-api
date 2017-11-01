@@ -1,7 +1,7 @@
 <?php
 
 use SUSWS\CAPAPI\AbstractAPILibInterface;
-use GuzzleHttp\Client as GuzzleClient;
+use GuzzleHttp\Client;
 
 namespace SUSWS\CAPAPI;
 
@@ -17,7 +17,7 @@ abstract class AbstractAPILib {
   /**
    * The HTTP Client.
    *
-   * @var GuzzleClient
+   * @var GuzzleHttp\Client
    */
   protected $client;
 
@@ -45,12 +45,12 @@ abstract class AbstractAPILib {
   /**
    * Construction requires a Guzzle http client.
    *
-   * @param GuzzleClient $client
+   * @param GuzzleHttp\Client $client
    *   A Guzzle HTTP Client.
    * @param array $options
    *   An array of HTTP options to use with the HTTP client.
    */
-  public function __construct(GuzzleClient $client, array $options = NULL) {
+  public function __construct(\GuzzleHttp\Client $client, array $options = NULL) {
     // Inject the client.
     $this->setClient($client);
 
@@ -65,17 +65,17 @@ abstract class AbstractAPILib {
   /**
    * Setter for $client.
    *
-   * @param GuzzleClient $client
+   * @param GuzzleHttp\Client $client
    *   A Guzzle HTTP Client.
    */
-  public function setClient(GuzzleClient $client) {
+  public function setClient(\GuzzleHttp\Client $client) {
     $this->client = $client;
   }
 
   /**
    * Getter for client.
    *
-   * @return GuzzleClient
+   * @return GuzzleHttp\Client
    *   A guzzle http client.
    */
   public function getClient() {
