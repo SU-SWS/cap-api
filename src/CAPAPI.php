@@ -11,45 +11,76 @@ use GuzzleHttp\Client;
 use SUSWS\APIAuthLib\Auth;
 
 /**
- * CAP HTTPClient extending Guzzle :)
+ * CAP API Library
  *
- * This client is used for communicating with the various endpoints of the
- * CAP API. The base of this class is the Guzzle HTTP client but contains a few
- * helpers and a lightweight lazy loading API library.
+ * This class is used for communicating with the various endpoints of the
+ * CAP API. The base of this class uses Guzzle HTTP client but contains a few
+ * helpers and a lightweight lazy loading API library for endpoints.
  *
- * Some API functions require an authentication token. This can be obtained
- * through the AuthLib and the authenticate() method.
+ * Most API functions require an authentication token. This can be obtained
+ * through the Auth param and the authenticate() method.
  *
  * EXAMPLES:
  *
- * $client = new HTTPClient();
+ * $guzzle = new Client(['defaults' => ['auth' => 'oauth']]);
  *
- * $auth = $client->api('auth');
- * $auth->authenticate('username', 'password');
- * $token = $auth->getAuthToken();
+ * $auth = new Auth($guzzle);
+ * $auth->authenticate($username, $password);
+ * $client = new API($guzzle, $auth);
  *
- * $client->setAPIToken($token);
- *
- * $schema = $client->api('schema')->profile();
+ * $profile = $client->api('profile')->get($profileID);
  */
-class API {
+class CAPAPI {
 
-  // Storage for the Guzzle http client object.
+  /**
+   * Storage for the Guzzle http client object.
+   *
+   * @var GuzzleClient
+   */
   protected $httpClient;
-  // Authentication Client.
+  /**
+   * Authentication Client.
+   *
+   * @var Auth
+   */
   protected $authClient;
-  // Default CAP Endpoint url.
+
+  /**
+   * Default CAP Endpoint url.
+   *
+   * @var string
+   */
   protected $httpEndpoint = 'https://api.stanford.edu';
-  // Auth Token is a very long string that is obtained from the CAP API after
-  // successfully authenticating a username and password. See AuthLib.
+
+  /**
+   * Auth Token.
+   *
+   * This is a very long string that is obtained from the CAP API after
+   * successfully authenticating a username and password. See AuthLib.
+   *
+   * @var string
+   */
   protected $httpAuthToken;
-  // HTTP Options is an array of extra options to pass into the HTTP Client.
+
+  /**
+   * HTTP Options is an array of extra options to pass into the HTTP Client.
+   *
+   * @var array
+   */
   protected $httpOptions;
 
   /**
-   * Build with an HTTP Client such as guzzle.
+   * Instantiate.
    *
-   * Live... live!
+   * Create a new API class with a GuzzleClient and an Auth Client. Please
+   * be sure to have not only an instantiated Auth client but an authenticated
+   * one. EG: $authClient->getAuthApiToken() should return valid credentials.
+   *
+   * @param Client $client
+   *    Guzzle HTTPClient.
+   * @param Auth $authClient
+   *    SUSWS Authentication Client that has successfully authenticated against
+   *    the auth endpoint already.
    */
   public function __construct(Client $client, Auth $authClient) {
     $this->setHttpClient($client);
@@ -103,7 +134,7 @@ class API {
    * @param Client $client
    *   A Guzzle client object.
    */
-  public function setHttpClient($client) {
+  public function setHttpClient(Client $client) {
     $this->httpClient = $client;
   }
 
@@ -146,13 +177,15 @@ class API {
    * @param array $opts
    *   An associative array of options to pass to the HTTP client.
    */
-  public function setHttpOptions($opts) {
+  public function setHttpOptions(array $opts) {
     $this->httpOptions = $opts;
   }
 
   /**
-   * [setLimit description]
-   * @param [type] $int [description]
+   * Set item limit per page.
+   *
+   * @param int $int
+   *    The number of items per page you want in the response.
    */
   public function setLimit($int) {
     $httpOpts = $this->getHttpOptions();
@@ -161,8 +194,10 @@ class API {
   }
 
   /**
-   * [getLimit description]
-   * @return [type] [description]
+   * Return the page limit for the request.
+   *
+   * @return int
+   *   The number of items per page per request.
    */
   public function getLimit() {
     $httpOpts = $this->getHttpOptions();
@@ -170,8 +205,10 @@ class API {
   }
 
   /**
-   * [setPage description]
-   * @param [type] $int [description]
+   * Set the page of response from the API.
+   *
+   * @param int $int
+   *    The page number of the paginated response.
    */
   public function setPage($int) {
     $httpOpts = $this->getHttpOptions();
